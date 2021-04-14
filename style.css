@@ -1,0 +1,40 @@
+.body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "v p"
+    "v s";
+  grid-gap: 20px;
+}
+
+.visual {
+  grid-area: v;
+}
+
+#canvas {
+  width: 100%;
+}
+
+.parameters {
+  grid-area: p;
+	font-size: 18px;
+}
+
+.button {
+	width: 200px;
+	height: 50px;
+	margin-top: 50px;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+.specifications {
+  grid-area: s;
+}

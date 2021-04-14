@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spring pendulum</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="visual">
+        <canvas id="canvas" height="250"> </canvas>
+      </div>
+      <div class="parameters">
+        <input name="m" type="range" min="0.5" max="1" step="0.1" value="0.5" />
+        <label>Масса груза (m) = <output name="mv">0.5</output> кг</label>
+        <br />
+        <input name="k" type="range" min="5" max="9" step="1" value="5" />
+        <label for="k">
+          Жесткость пружины (k) = <output name="kv">5</output> Н/м
+        </label>
+        <br />
+        <input name="x0" type="range" min="0" max="20" step="2" value="10" />
+        <label for="x0">
+          Первоначальное отклонение от равновесия (x0) =
+          <output name="x0v">10</output> см
+        </label>
+        <br />
+        <button class="play button">Play</button>
+        <button class="clear button">Clear</button>
+      </div>
+      <div class="specifications">
+        <p class="specification">
+          Циклическая частота собственных колебаний (ω) =
+          <span class="specification__w">0</span> рад/c
+        </p>
+        <p class="specification">
+          Время колебаний (t) = <span class="specification__t">0</span> c
+        </p>
+        <p class="specification">
+          Количество полных колебаний (N) =
+          <span class="specification__n">0</span>
+        </p>
+        <p class="specification">
+          Координата (x) = <span class="specification__x">10</span> см
+        </p>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
