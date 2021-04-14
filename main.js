@@ -31,7 +31,12 @@ param.addEventListener("click", (e) => {
   if (e.target.classList.contains("play")) {
     if (e.target.textContent === "Stop") {
       cancelAnimationFrame(indexReqAnimFr);
+
       e.target.textContent = "Play";
+
+      m.disabled = false;
+      k.disabled = false;
+      x0.disabled = false;
     } else {
       clear();
       start();
@@ -147,12 +152,20 @@ function clear() {
   spec_x.textContent = x0.value;
   button.textContent = "Play";
 
+  m.disabled = false;
+  k.disabled = false;
+  x0.disabled = false;
+
   draw();
 }
 
 //Запустить анимацию
 function start() {
   cancelAnimationFrame(indexReqAnimFr);
+
+  m.disabled = true;
+  k.disabled = true;
+  x0.disabled = true;
 
   redraw();
 
