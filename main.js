@@ -31,12 +31,11 @@ param.addEventListener("click", (e) => {
   if (e.target.classList.contains("play")) {
     if (e.target.textContent === "Stop") {
       cancelAnimationFrame(indexReqAnimFr);
-      stopTime = new Date();
-      e.target.textContent = "Continue";
-    } else start();
-  }
-  if (e.target.classList.contains("clear")) {
-    clear();
+      e.target.textContent = "Play";
+    } else {
+      clear();
+      start();
+    }
   }
 });
 
@@ -51,8 +50,6 @@ let lengthSpring = defaultLengthSpring + Number(x0.value); //Длина пруж
 let indexReqAnimFr = null; //Индекс, возвращаемый функцией requestAnimationFrame
 
 let startTime = null; //Время старта анимации
-let stopTime = null; //Время остановки системы
-let timeInterval = 0; //Интервал времени, показывающий сколько секунд система была остановлена
 
 //Отрисовка системы
 function draw() {
@@ -126,9 +123,7 @@ function redraw() {
 function getParameters() {
   let w = Math.sqrt(k.value / m.value); //Циклическая частота собственных колебаний
 
-  if (stopTime) timeInterval += (new Date() - stopTime) / 1000;
-
-  let t = (new Date() - startTime) / 1000 - timeInterval; //Время колебаний (в секундах)
+  let t = (new Date() - startTime) / 1000; //Время колебаний (в секундах)
 
   let T = (2 * Math.PI) / w; //Период колебаний
 
@@ -145,8 +140,6 @@ function clear() {
 
   lengthSpring = defaultLengthSpring + Number(x0.value);
   startTime = null;
-  stopTime = null;
-  timeInterval = 0;
 
   spec_w.textContent = 0;
   spec_t.textContent = 0;
