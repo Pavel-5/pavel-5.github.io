@@ -58,6 +58,7 @@ let startTime = null; //Время старта анимации
 
 //Отрисовка системы
 function draw() {
+
   //Очистка холста
   mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
@@ -103,7 +104,7 @@ function draw() {
   mainContext.closePath();
   mainContext.stroke();
 
-  indexReqAnimFr = requestAnimationFrame(draw);
+  if (!indexReqAnimFr) indexReqAnimFr = requestAnimationFrame(draw);
 }
 
 //Анимация
@@ -116,7 +117,7 @@ function redraw() {
 
   spec_w.textContent = w.toFixed(3);
   spec_t.textContent = t.toFixed(1);
-  spec_n.textContent = Math.round(N);
+  spec_n.textContent = Math.floor(N);
   spec_x.textContent = Math.round(x);
 
   draw();
@@ -142,6 +143,7 @@ function getParameters() {
 //Очистка
 function clear() {
   cancelAnimationFrame(indexReqAnimFr);
+	indexReqAnimFr = null;
 
   lengthSpring = defaultLengthSpring + Number(x0.value);
   startTime = null;
@@ -168,8 +170,6 @@ function start() {
   x0.disabled = true;
 
   redraw();
-
-  stopTime = null;
 
   button.textContent = "Stop";
 }
